@@ -1,6 +1,7 @@
 # http://www.appveyor.com/docs/appveyor-yml
 
 build: off
+skip_tags: true
 
 environment:
   matrix:
