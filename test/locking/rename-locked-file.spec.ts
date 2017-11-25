@@ -1,8 +1,8 @@
 import * as os from "os";
 import {test} from "ava";
 
-import {instantiate, WIN32_PLATFORM} from "dist/index"; // importing the built/final code
-import {file, fileData, nowMs, waitPromise} from "./util";
+import {instantiate, nowMs, WIN32_PLATFORM} from "dist/index"; // importing the built/final code
+import {file, fileData, waitPromise} from "./util";
 
 test(`rename locked file "${file}"`, async (t) => {
     const testStartTime = nowMs();

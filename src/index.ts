@@ -72,7 +72,7 @@ export function instantiate(options?: Partial<Options>): typeof originalInstance
         }, {} as any);
 }
 
-const nowMs = () => Number(new Date());
+export const nowMs = () => Number(new Date());
 
 async function retryOnLockedResourceError<T>(action: (...args: any[]) => Promise<T>, options: Options): Promise<T> {
     if (os.platform() !== WIN32_PLATFORM) {
