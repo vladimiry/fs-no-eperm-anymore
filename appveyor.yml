@@ -11,8 +11,9 @@ environment:
 
 cache:
   - node_modules
-  
+
 install:
+  - ps: Install-Product node $env:nodejs_version $env:platform
   - npm install
 
 test_script:
