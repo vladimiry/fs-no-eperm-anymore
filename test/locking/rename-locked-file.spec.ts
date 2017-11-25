@@ -1,12 +1,12 @@
 import * as os from "os";
 import {test} from "ava";
 
-import {instance, WIN32_PLATFORM} from "dist/index"; // importing the built/final code
+import {instantiate, WIN32_PLATFORM} from "dist/index"; // importing the built/final code
 import {file, fileData, nowMs, waitPromise} from "./util";
 
 test(`rename locked file "${file}"`, async (t) => {
     const testStartTime = nowMs();
-    const fs = instance();
+    const fs = instantiate();
 
     // give 1000 to another process for file creating
     await waitPromise(1000);

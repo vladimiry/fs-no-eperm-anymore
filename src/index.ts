@@ -14,6 +14,7 @@ const WIN32_LOCKED_RESOURCE_ERR_CODES = new Set(["EPERM"]);
 const DEFAULT_OPTIONS: Options = {
     retryTimeoutMs: 30 * 1000,
     retryIntervalMs: 50,
+    // TODO consider adding "callsLimit" like option
 };
 
 const stubs = {
@@ -60,20 +61,20 @@ export const originalInstance = Object.freeze({
     copyFile: promisify(fs.copyFile || stubs.copyFile),
 });
 
-export function instance(options?: Options): typeof originalInstance {
+export function instantiate(options?: Partial<Options>): typeof originalInstance {
+    const fullOptions: Options = {...DEFAULT_OPTIONS, ...options};
+
     return Object.keys(originalInstance)
         .reduce((map, functionName) => {
             const fn = (originalInstance as any)[functionName] as any;
-            map[functionName] = (...args: any[]) => retryOnLockedResourceError(() => fn(...args), options);
+            map[functionName] = (...args: any[]) => retryOnLockedResourceError(() => fn(...args), fullOptions);
             return map;
         }, {} as any);
 }
 
 const nowMs = () => Number(new Date());
 
-async function retryOnLockedResourceError<T>(action: (...args: any[]) => Promise<T>, options?: Options): Promise<T> {
-    const {retryTimeoutMs, retryIntervalMs}: Options = {...DEFAULT_OPTIONS, ...options};
-
+async function retryOnLockedResourceError<T>(action: (...args: any[]) => Promise<T>, options: Options): Promise<T> {
     if (os.platform() !== WIN32_PLATFORM) {
         return await action();
     }
@@ -85,8 +86,8 @@ async function retryOnLockedResourceError<T>(action: (...args: any[]) => Promise
         } catch (error) {
             const timeDiffMs = nowMs() - startTime;
 
-            if (WIN32_LOCKED_RESOURCE_ERR_CODES.has(error.code) && timeDiffMs < retryTimeoutMs) {
-                await new Promise((resolve) => setTimeout(resolve, retryIntervalMs));
+            if (WIN32_LOCKED_RESOURCE_ERR_CODES.has(error.code) && timeDiffMs < options.retryTimeoutMs) {
+                await new Promise((resolve) => setTimeout(resolve, options.retryIntervalMs));
                 return await actionExecutionAttempt();
             }
 

@@ -1,13 +1,13 @@
 import * as mkdirp from "mkdirp";
 import {test} from "ava";
 
-import {instance} from "dist/index"; // importing the built/final code
+import {instantiate} from "dist/index"; // importing the built/final code
 import {file, fileData, lockTime4000ms, nowMs, outputDir, waitPromise} from "./util";
 
 test(`lock file : "${file}"`, async (t) => {
     mkdirp.sync(outputDir);
 
-    const fs = instance();
+    const fs = instantiate();
 
     await fs.writeFile(file, fileData);
 
