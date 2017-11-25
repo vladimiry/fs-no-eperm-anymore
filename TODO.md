@@ -1,3 +1,3 @@
-- Improve TypeScript signatures.
+~~- Improve TypeScript signatures.~~
 - Enabling exponential backoff.
 - Tests extending.
