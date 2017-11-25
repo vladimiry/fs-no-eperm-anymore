@@ -30,11 +30,17 @@ test(`rename locked file "${file}"`, async (t) => {
     // clear resources
     await fs.unlink(file);
 
+    // tslint:disable:no-console
     if (os.platform() === WIN32_PLATFORM) {
-        const minValue = 1500;
-        t.true(renameWaitTime >= minValue, `"renameWaitTime" (${renameWaitTime}) should be >= ${minValue} on win32 platform`);
+        const minValue = 2000;
+        const msg = `"renameWaitTime" (${renameWaitTime}) should be >= ${minValue} on win32 platform`;
+        t.true(renameWaitTime >= minValue, msg);
+        console.log(msg);
     } else {
         const maxValue = 300;
-        t.true(renameWaitTime < maxValue, `renameWaitTime is expected to be < ${maxValue} on the non win32 platform (there is no locking)`);
+        const msg = `renameWaitTime is expected to be < ${maxValue} on the non win32 platform`;
+        t.true(renameWaitTime < maxValue, msg);
+        console.log(msg);
     }
+    // tslint:enable:no-console
 });
