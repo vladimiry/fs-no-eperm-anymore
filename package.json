@@ -24,7 +24,7 @@
     "dist:clean": "rimraf ./dist",
     "dist:copy": "cpx \"{package.json,package-lock.json,README.md,LICENSE}\" ./dist",
     "dist": "npm-run-all lint dist:clean compile:dist test dist:copy",
-    "lint": "tslint \"./src/**/*.ts\"",
+    "lint": "tslint \"./{src,test}/**/*.ts\"",
     "test": "ava-ts --verbose \"./test/**/*.spec.ts\""
   },
   "pre-commit": [
