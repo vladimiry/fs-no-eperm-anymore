@@ -19,6 +19,7 @@ const DEFAULT_OPTIONS: Options = {
 const stubs = {
     lchown: (path: fs.PathLike, uid: number, gid: number, cb: (err: NodeJS.ErrnoException) => void) => process.nextTick(cb),
     lchmod: (path: fs.PathLike, mode: string | number, cb: (err: NodeJS.ErrnoException) => void) => process.nextTick(cb),
+    copyFile: (src: fs.PathLike, dest: fs.PathLike, flags: number, cb: (err: NodeJS.ErrnoException) => void): void => process.nextTick(cb),
 };
 
 // in order to generate the d.ts files automatically functions listed explicitly (keeping the original references)
@@ -56,7 +57,7 @@ export const originalInstance = Object.freeze({
     // exists: promisify(fs.exists), // deprecated
     access: promisify(fs.access),
     fdatasync: promisify(fs.fdatasync),
-    copyFile: promisify(fs.copyFile),
+    copyFile: promisify(fs.copyFile || stubs.copyFile),
 });
 
 export function instance(options?: Options): typeof originalInstance {
