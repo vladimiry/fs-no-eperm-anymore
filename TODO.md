@@ -1,0 +1,2 @@
+- Enabling exponential backoff.
+- Tests extending.

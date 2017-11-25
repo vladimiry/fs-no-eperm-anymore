@@ -1,0 +1,59 @@
+{
+  "name": "fs-no-eperm-anymore",
+  "version": "0.0.1",
+  "description": "Node.js module that reduces EPERM errors on win32 platform using retry approach",
+  "author": "Vladimir Yakovlev <dev.vladimir.y@gmail.com> (https://github.com/vladimiry)",
+  "license": "MIT",
+  "keywords": [
+    "fs",
+    "retry",
+    "retries",
+    "error",
+    "handling",
+    "EPERM"
+  ],
+  "engines": {
+    "node": ">=6.12.0"
+  },
+  "main": "./index.js",
+  "types": "./index.d.ts",
+  "scripts": {
+    "compile": "tsc --outDir ./compile",
+    "compile:watch": "tsc --outDir ./compile -w",
+    "compile:dist": "tsc --noEmitOnError",
+    "dist:clean": "rimraf ./dist",
+    "dist:copy": "cpx \"{package.json,package-lock.json,README.md,LICENSE}\" ./dist",
+    "dist": "npm-run-all lint dist:clean compile:dist test dist:copy",
+    "lint": "tslint \"./src/**/*.ts\"",
+    "test": "ava-ts --verbose \"./test/**/*.spec.ts\""
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "ava": {
+    "TODO 1": "get rid of ava-ts, runt tests using ts-node as soon as ava gets *.ts file pattern allowed",
+    "TODO 2": "ts-node/register is added as ava-ts doesn't work well with just tsconfig-paths/register added without explicit ts-node/register attaching",
+    "require": [
+      "ts-node/register",
+      "tsconfig-paths/register"
+    ]
+  },
+  "devDependencies": {
+    "@types/mkdirp": "0.5.1",
+    "@types/node": "8.0.53",
+    "ava": "0.23.0",
+    "ava-ts": "0.23.0",
+    "cpx": "1.5.0",
+    "mkdirp": "0.5.1",
+    "npm-run-all": "4.1.2",
+    "pre-commit": "1.2.2",
+    "rimraf": "2.6.2",
+    "ts-node": "3.3.0",
+    "tsconfig-paths": "2.4.0",
+    "tslint": "5.8.0",
+    "typescript": "2.6.1"
+  },
+  "dependencies": {
+    "util.promisify": "1.0.0"
+  }
+}

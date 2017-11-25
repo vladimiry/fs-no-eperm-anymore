@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "strict": true,
+    "declaration": true,
+    "sourceMap": true,
+    "listEmittedFiles": true,
+    "lib": [
+      "es2015"
+    ],
+    "outDir": "./dist",
+    "baseUrl": ".",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ]
+  },
+  "include": [
+    "./src/index.ts"
+  ]
+}
