@@ -24,6 +24,9 @@ const stubs = {
 };
 
 // in order to generate the d.ts files automatically functions listed explicitly (keeping the original references)
+// TODO define the signature explicitly
+// just wrapping "fs" methods into the "promisify" is not enough to get the signatures properly inferred
+// for example "originalInstance.writeFile" has only 2 arguments, while there is the third optional "options" argument
 export const originalInstance = Object.freeze({
     rename: promisify(fs.rename),
     truncate: promisify(fs.truncate),
