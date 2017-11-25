@@ -38,7 +38,7 @@ test(`rename locked file "${file}"`, async (t) => {
         console.log(msg);
     } else {
         const maxValue = 300;
-        const msg = `renameWaitTime is expected to be < ${maxValue} on the non win32 platform`;
+        const msg = `renameWaitTime (${renameWaitTime}) is expected to be < ${maxValue} on the non win32 platform`;
         t.true(renameWaitTime < maxValue, msg);
         console.log(msg);
     }
