@@ -1,0 +1,21 @@
+# http://www.appveyor.com/docs/appveyor-yml
+
+build: off
+
+environment:
+  matrix:
+    - nodejs_version: "6"
+    - nodejs_version: "7"
+    - nodejs_version: "8"
+    - nodejs_version: "9"
+
+cache:
+  - node_modules
+  
+install:
+  - npm install
+
+test_script:
+  - node --version
+  - npm --version
+  - npm run dist
