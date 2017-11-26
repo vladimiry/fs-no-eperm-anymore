@@ -1,15 +1,19 @@
 {
+  // https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+  // https://www.typescriptlang.org/docs/handbook/compiler-options.html
   "compilerOptions": {
     "target": "es5",
     "strict": true,
+    "module": "commonjs",
+    "noEmitOnError": true,
     "declaration": true,
     "sourceMap": true,
     "listEmittedFiles": true,
     "lib": [
       "es2015"
     ],
-    "outDir": "./dist",
     "baseUrl": ".",
+    "outDir": "./compile",
     "typeRoots": [
       "./node_modules/@types",
       "./src/@types"

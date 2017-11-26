@@ -1,0 +1,8 @@
+{
+  "extends": [
+    "./tslint.json"
+  ],
+  "rules": {
+    // TODO ban all imports except from the "node_modules" and "dist"
+  }
+}

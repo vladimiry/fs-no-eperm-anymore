@@ -2,13 +2,10 @@ import * as url from "url"; // needed for the implicit d.ts files generating
 import * as fs from "fs";
 import * as os from "os";
 
-import {Options, UtilPromisify} from "./model";
+import {Options} from "./model";
+import {nowMs, promisify} from "./private";
 
-// tslint:disable:no-var-requires
-const promisify = require("util.promisify") as UtilPromisify;
-// tslint:enable:no-var-requires
-
-export const WIN32_PLATFORM = "win32";
+const WIN32_PLATFORM = "win32";
 const WIN32_LOCKED_RESOURCE_ERR_CODES = new Set(["EPERM"]);
 
 const DEFAULT_OPTIONS: Options = {
@@ -71,8 +68,6 @@ export function instantiate(options?: Partial<Options>): typeof originalInstance
             return map;
         }, {} as any);
 }
-
-export const nowMs = () => Number(new Date());
 
 async function retryOnLockedResourceError<T>(action: (...args: any[]) => Promise<T>, options: Options): Promise<T> {
     if (os.platform() !== WIN32_PLATFORM) {

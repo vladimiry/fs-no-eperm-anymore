@@ -1,8 +1,8 @@
 import * as os from "os";
 import {test} from "ava";
 
-import {instantiate, nowMs, WIN32_PLATFORM} from "dist/index"; // importing the built/final code
-import {file, fileData, waitPromise} from "./util";
+import {instantiate} from "dist"; // import the built/final code
+import {file, fileData, nowMs, waitPromise} from "../util";
 
 test(`rename locked file "${file}"`, async (t) => {
     const testStartTime = nowMs();
@@ -31,7 +31,7 @@ test(`rename locked file "${file}"`, async (t) => {
     await fs.unlink(file);
 
     // tslint:disable:no-console
-    if (os.platform() === WIN32_PLATFORM) {
+    if (os.platform() === "win32") {
         const minValue = 2000;
         const msg = `"renameWaitTime" (${renameWaitTime}) should be >= ${minValue} on win32 platform`;
         t.true(renameWaitTime >= minValue, msg);

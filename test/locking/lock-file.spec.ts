@@ -1,8 +1,8 @@
 import * as mkdirp from "mkdirp";
 import {test} from "ava";
 
-import {instantiate, nowMs} from "dist/index"; // importing the built/final code
-import {file, fileData, lockTime, outputDir, waitPromise} from "./util";
+import {instantiate} from "dist"; // import the built/final code
+import {file, fileData, lockTime, nowMs, outputDir, waitPromise} from "../util";
 
 test(`lock file : "${file}"`, async (t) => {
     mkdirp.sync(outputDir);

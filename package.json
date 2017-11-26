@@ -22,13 +22,15 @@
   "main": "./index.js",
   "types": "./index.d.ts",
   "scripts": {
-    "compile": "tsc --outDir ./compile",
-    "compile:watch": "tsc --outDir ./compile -w",
-    "compile:dist": "tsc --noEmitOnError",
+    "compile": "tsc",
+    "compile:watch": "tsc -w",
+    "dist:compile": "tsc --outDir ./dist",
     "dist:clean": "rimraf ./dist",
     "dist:copy": "cpx \"{package.json,package-lock.json,README.md,LICENSE}\" ./dist",
-    "dist": "npm-run-all lint dist:clean compile:dist test dist:copy",
-    "lint": "tslint \"./{src,test}/**/*.ts\"",
+    "dist": "npm-run-all dist:clean lint dist:compile dist:copy test",
+    "lint-src": "tslint -c ./tslint.json \"./src/**/*.ts\"",
+    "lint-test": "tslint -c ./tslint-test.json \"./test/**/*.ts\"",
+    "lint": "npm-run-all lint-src lint-test",
     "test": "ava-ts --verbose \"./test/**/*.spec.ts\""
   },
   "pre-commit": [
@@ -55,6 +57,7 @@
     "ts-node": "3.3.0",
     "tsconfig-paths": "2.4.0",
     "tslint": "5.8.0",
+    "tslint-config-stumpfi": "1.0.9",
     "typescript": "2.6.1"
   },
   "dependencies": {

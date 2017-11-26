@@ -7,3 +7,5 @@ export const fileData = "some file data";
 export const lockTime = 8 * 1000;
 
 export const waitPromise = (timeout: number) => new Promise((resolve) => setTimeout(resolve, timeout));
+
+export const nowMs = () => Number(new Date());
