@@ -14,11 +14,11 @@ const ruleDashName = ruleFileDashName.replace(/-rule$/, "");
 
 export class Rule extends Lint.Rules.AbstractRule {
     public apply(sourceFile: ts.SourceFile): Lint.RuleFailure[] {
-        return this.applyWithWalker(new Walker(sourceFile, this.getOptions()));
+        return this.applyWithWalker(new ForbiddenImportRegExpWalker(sourceFile, this.getOptions()));
     }
 }
 
-class Walker extends Lint.RuleWalker {
+class ForbiddenImportRegExpWalker extends Lint.RuleWalker {
     private readonly BAN_PATH_PREFIX = /src\/lib/;
 
     public visitImportDeclaration(node: ts.ImportDeclaration) {

@@ -6,6 +6,6 @@
     "./compile/tslint-rules"
   ],
   "rules": {
-    "forbiddenImportRegExp": true
+    "forbidImportRegExp": true
   }
 }

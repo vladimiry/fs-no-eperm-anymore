@@ -31,7 +31,7 @@
     "lint:src": "tslint -c ./tslint.json \"./src/{lib,@types,tslint}/**/*.ts\"",
     "lint:test": "npm-run-all lint:test:pre lint:test:run",
     "lint:test:run": "tslint -c ./tslint-test.json \"./src/test/**/*.ts\"",
-    "lint:test:pre": "tsc ./src/tslint/forbiddenImportRegExpRule.ts --outDir ./compile/tslint-rules --lib es2015",
+    "lint:test:pre": "tsc ./src/tslint/forbidImportRegExpRule.ts --outDir ./compile/tslint-rules --lib es2015",
     "lint": "npm-run-all lint:src lint:test",
     "test": "cross-env TS_NODE_PROJECT=./tsconfig-test.json ava-ts --verbose \"./src/test/**/*.spec.ts\""
   },
