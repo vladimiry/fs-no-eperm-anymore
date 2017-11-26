@@ -1,6 +1,6 @@
 import {test} from "ava";
 
-import {instantiate, originalInstance} from "dist"; // import the built/final code
+import {instantiate, originalInstance} from "dist";
 
 test("types of the exported items", async (t) => {
     const customInstance = instantiate();

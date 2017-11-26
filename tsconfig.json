@@ -12,7 +12,7 @@
     "lib": [
       "es2015"
     ],
-    "baseUrl": ".",
+    "baseUrl": "./src/lib",
     "outDir": "./compile",
     "typeRoots": [
       "./node_modules/@types",
@@ -20,6 +20,6 @@
     ]
   },
   "include": [
-    "./src/index.ts"
+    "./src/lib/index.ts"
   ]
 }

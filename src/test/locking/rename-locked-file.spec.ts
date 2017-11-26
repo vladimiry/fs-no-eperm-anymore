@@ -1,7 +1,7 @@
 import * as os from "os";
 import {test} from "ava";
 
-import {instantiate} from "dist"; // import the built/final code
+import {instantiate} from "dist";
 import {file, fileData, nowMs, waitPromise} from "../util";
 
 test(`rename locked file "${file}"`, async (t) => {

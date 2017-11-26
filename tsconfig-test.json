@@ -1,0 +1,12 @@
+{
+  // there is no way to do partial overriding extended tsconfig.json config
+  // like overriding only the inner "compilerOptions" options
+  // since TypeScript doesn't do merge, but it simplydoes overriding https://github.com/Microsoft/TypeScript/pull/14178
+  "compilerOptions": {
+    "strict": true,
+    "lib": [
+      "es2015"
+    ],
+    "baseUrl": "."
+  }
+}
