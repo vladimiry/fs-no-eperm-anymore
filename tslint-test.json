@@ -3,9 +3,28 @@
     "./tslint.json"
   ],
   "rulesDirectory": [
-    "./compile/tslint-rules"
+    "node_modules/tslint-rules-bunch/rules"
   ],
   "rules": {
-    "forbidImportRegExp": true
+    "no-import-zones": [
+      true,
+      {
+        "zones": [
+          {
+            "patterns": [
+              {
+                "target": "src/test/**/*",
+                "from": [
+                  "src/lib",
+                  "src/lib/**/*",
+                  "dist/private",
+                  "dist/private/**/*"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 }

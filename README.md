@@ -30,5 +30,5 @@ is a Node.js module that reduces EPERM errors on win32 platform using retry appr
 ```
 
 ## Links
-
  * https://github.com/isaacs/node-graceful-fs/pull/119 - more details about the EPERM errors.
+ * https://nodejs.org/api/errors.html#errors_common_system_errors - Common System Errors

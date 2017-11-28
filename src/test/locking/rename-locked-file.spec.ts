@@ -5,7 +5,6 @@ import {instantiate} from "dist";
 import {file, fileData, nowMs, waitPromise} from "../util";
 
 test(`rename locked file "${file}"`, async (t) => {
-    const testStartTime = nowMs();
     const fs = instantiate();
 
     // give 1000 to another process for file creating
