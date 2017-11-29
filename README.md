@@ -1,17 +1,25 @@
 # fs-no-eperm-anymore
 
-is a Node.js module that reduces EPERM errors on win32 platform using retry approach.
+is a Node.js module that reduces EPERM or other errors on win32 or other platforms using retry loop approach.
 
 ## Notes
 
 - Original "fs" methods are wrapped into the ES2015 Promises.
 - Module exposes only the `async` functions. Retry approach is used and so it won't make much sense to `sleep` the main process just to support `sync` methods set.
-- Default options values:
+- Default `options` value:
 
 ```typescript
     const options = {
-        retryTimeoutMs: 30 * 1000,
-        retryIntervalMs: 50,
+        items: [
+            {
+                platforms: ["win32"],
+                errorCodes: ["EPERM"], // https://nodejs.org/api/errors.html#errors_common_system_errors
+                options: {
+                    retryIntervalMs: 100,
+                    retryTimeoutMs: 10 * 1000,
+                },
+            },
+        ],
     };
 ```
 
@@ -28,6 +36,8 @@ is a Node.js module that reduces EPERM errors on win32 platform using retry appr
         .then(() => console.log("Successful renaming"))
         .catch((error) => console.log("Renaming failed with the error", error));    
 ```
+
+You can see more details about the `options` parameter in the [Making options more flexible](https://github.com/vladimiry/fs-no-eperm-anymore/issues/1) issue.
 
 ## Links
  * https://github.com/isaacs/node-graceful-fs/pull/119 - more details about the EPERM errors.
