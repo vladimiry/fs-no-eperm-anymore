@@ -62,10 +62,11 @@
     "ts-node": "^3.3.0",
     "tsconfig-paths": "^2.4.0",
     "tslint": "^5.8.0",
-    "tslint-rules-bunch": "^0.0.2",
+    "tslint-rules-bunch": "^0.0.3",
     "typescript": "~2.6.2"
   },
   "dependencies": {
+    "tslib": "1.8.0",
     "util.promisify": "^1.0.0"
   }
 }
