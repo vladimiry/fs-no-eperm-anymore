@@ -105,4 +105,6 @@ export function resolveAttemptOptions(fnName: keyof typeof FUNCTIONS, errorCode:
     if (resolveItem) {
         return resolveItem.options;
     }
+
+    return;
 }
