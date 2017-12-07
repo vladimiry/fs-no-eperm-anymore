@@ -8,7 +8,7 @@ is a Node.js module that reduces EPERM or other errors on win32 or other platfor
 
 - Original "fs" methods are wrapped into the ES2015 Promises.
 - Module exposes only the `async` functions. Retry approach is used and so it won't make much sense to `sleep` the main process just to support `sync` methods set.
-- Default `options` value:
+- You can see some details about the `options` parameter in the [Making options more flexible](https://github.com/vladimiry/fs-no-eperm-anymore/issues/1) issue. Default `options` value:
 
 ```typescript
     const options = {
@@ -38,8 +38,6 @@ is a Node.js module that reduces EPERM or other errors on win32 or other platfor
         .then(() => console.log("Successful renaming"))
         .catch((error) => console.log("Renaming failed with the error", error));    
 ```
-
-You can see more details about the `options` parameter in the [Making options more flexible](https://github.com/vladimiry/fs-no-eperm-anymore/issues/1) issue.
 
 ## Links
  * https://github.com/isaacs/node-graceful-fs/pull/119 - more details about the EPERM errors.
