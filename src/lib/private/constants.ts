@@ -5,7 +5,7 @@ import * as url from "url";
 import * as fs from "fs";
 
 import {promisify} from "./promisify";
-import {Options} from "../model";
+import {Options} from "./model";
 
 // tslint:disable:object-literal-sort-keys
 export const DEFAULT_OPTIONS: Options = Object.freeze({

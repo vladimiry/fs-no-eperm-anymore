@@ -17,8 +17,7 @@
                 "from": [
                   "src/lib",
                   "src/lib/**/*",
-                  "dist/private",
-                  "dist/private/**/*"
+                  "dist/**/*"
                 ]
               }
             ]

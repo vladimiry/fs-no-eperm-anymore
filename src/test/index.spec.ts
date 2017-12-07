@@ -6,8 +6,7 @@ import * as randomstring from "randomstring";
 import * as nodePlatforms from "node-platforms";
 import {test} from "ava";
 
-import {instantiate, resolveAttemptOptions} from "dist";
-import {Options, OptionsItem} from "dist/model";
+import {instantiate, resolveAttemptOptions, Model} from "dist";
 import {nowMs, outputDir} from "./util";
 
 const CURRENT_PLATFORM = os.platform();
@@ -68,7 +67,7 @@ test(`${instantiate.name}: mounting functions to the instance`, async (t) => {
 test(`${resolveAttemptOptions.name}: platform filter`, (t) => {
     let retryMsCounter = 0;
 
-    const items: OptionsItem[] = [];
+    const items: Model.OptionsItem[] = [];
 
     nodePlatforms().forEach((platform: string) => items.push({
         platforms: [platform],
@@ -77,7 +76,7 @@ test(`${resolveAttemptOptions.name}: platform filter`, (t) => {
         options: {retryIntervalMs: ++retryMsCounter, retryTimeoutMs: retryMsCounter},
     }));
 
-    const options: Options = {items};
+    const options: Model.Options = {items};
     const expectedItem: any = options.items.find((item: any) => item.platforms.indexOf(CURRENT_PLATFORM) !== -1);
     const resolvedAttemptOptions = resolveAttemptOptions(expectedItem.functions[0], expectedItem.errorCodes[0], options);
 
@@ -89,29 +88,29 @@ test(`${resolveAttemptOptions.name}: weight factor`, (t) => {
     const fnName = "rename";
     let retryMsCounter = 0;
 
-    const itemW80: OptionsItem = {
+    const itemW80: Model.OptionsItem = {
         platforms: [CURRENT_PLATFORM, randomstring.generate()],
         errorCodes: [errorCode, randomstring.generate()],
         functions: [fnName, randomstring.generate()],
         options: {retryIntervalMs: ++retryMsCounter, retryTimeoutMs: retryMsCounter},
     };
-    const itemW80Dup: OptionsItem = {
+    const itemW80Dup: Model.OptionsItem = {
         ...itemW80,
         options: {retryIntervalMs: ++retryMsCounter, retryTimeoutMs: retryMsCounter},
     };
-    const itemW30: OptionsItem = {
+    const itemW30: Model.OptionsItem = {
         platforms: [CURRENT_PLATFORM, randomstring.generate()],
         errorCodes: [errorCode, randomstring.generate()],
         // functions: [fnName, randomstring.generate()],
         options: {retryIntervalMs: ++retryMsCounter, retryTimeoutMs: retryMsCounter},
     };
-    const itemW20: OptionsItem = {
+    const itemW20: Model.OptionsItem = {
         // platforms: [CURRENT_PLATFORM, randomstring.generate()],
         errorCodes: [errorCode, randomstring.generate()],
         // functions: [fnName, randomstring.generate()],
         options: {retryIntervalMs: ++retryMsCounter, retryTimeoutMs: retryMsCounter},
     };
-    const itemW10: OptionsItem = {
+    const itemW10: Model.OptionsItem = {
         platforms: [CURRENT_PLATFORM, randomstring.generate()],
         // errorCodes: [errorCode, randomstring.generate()],
         // functions: [fnName, randomstring.generate()],
@@ -143,7 +142,7 @@ test(`${resolveAttemptOptions.name}: weight factor`, (t) => {
 });
 
 test(`${resolveAttemptOptions.name}: empty filters`, (t) => {
-    const item: OptionsItem = {
+    const item: Model.OptionsItem = {
         options: {retryIntervalMs: 1, retryTimeoutMs: 2},
     };
 
