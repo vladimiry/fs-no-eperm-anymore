@@ -50,7 +50,7 @@
     "@types/mkdirp": "^0.5.1",
     "@types/node": "^10.3.6",
     "@types/randomstring": "^1.1.6",
-    "ava": "1.0.0-beta.6",
+    "ava": "^1.0.0-beta.6",
     "cpx": "^1.5.0",
     "cross-env": "^5.1.1",
     "mkdirp": "^0.5.1",
