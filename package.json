@@ -21,24 +21,26 @@
   },
   "main": "./index.js",
   "scripts": {
-    "compile": "tsc",
-    "compile:watch": "tsc -w",
-    "dist:compile": "tsc --outDir ./dist",
-    "dist:compile:watch": "tsc --outDir ./dist -w",
+    "compile": "tsc -p ./src/lib/tsconfig.json",
+    "compile:watch": "tsc -p ./src/lib/tsconfig.json -w",
+    "dist:compile": "tsc -p ./src/lib/tsconfig.json --outDir ./dist",
+    "dist:compile:watch": "tsc -p ./src/lib/tsconfig.json --outDir ./dist -w",
     "dist:clean": "rimraf ./dist",
     "dist:copy": "cpx \"{package.json,README.md,LICENSE}\" ./dist",
     "dist": "npm-run-all lint dist:clean dist:compile dist:copy test",
-    "lint:src": "tslint -c ./tslint.json \"./src/{lib,@types}/**/*.ts\"",
-    "lint:test": "tslint -c ./tslint-test.json \"./src/test/**/*.ts\"",
+    "lint:src": "tslint -p ./tsconfig.json -c ./tslint.json \"./src/{lib,@types}/**/*.ts\"",
+    "lint:test": "tslint -p ./tsconfig.json -c ./tslint-test.json \"./src/test/**/*.ts\"",
     "lint": "npm-run-all lint:src lint:test",
-    "test": "cross-env TS_NODE_PROJECT=./src/test/tsconfig.json ava-ts --verbose \"./src/test/**/*.spec.ts\""
+    "test": "cross-env TS_NODE_PROJECT=./src/test/tsconfig.json ava --verbose \"./src/test/**/*.spec.ts\""
   },
   "pre-commit": [
     "lint"
   ],
   "ava": {
-    "TODO ava 1": "get rid of ava-ts, run tests using ts-node as soon as ava gets *.ts file pattern allowed",
-    "TODO ava 2": "ts-node/register is added as ava-ts doesn't work well with just tsconfig-paths/register added without explicit ts-node/register attaching",
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
     "require": [
       "ts-node/register",
       "tsconfig-paths/register"
@@ -48,8 +50,7 @@
     "@types/mkdirp": "^0.5.1",
     "@types/node": "^10.3.6",
     "@types/randomstring": "^1.1.6",
-    "ava": "^0.25.0",
-    "ava-ts": "^0.24.6",
+    "ava": "1.0.0-beta.6",
     "cpx": "^1.5.0",
     "cross-env": "^5.1.1",
     "mkdirp": "^0.5.1",

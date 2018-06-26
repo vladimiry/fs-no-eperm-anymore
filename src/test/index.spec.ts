@@ -1,9 +1,9 @@
 // tslint:disable:object-literal-sort-keys
 
-import * as os from "os";
-import * as path from "path";
-import * as randomstring from "randomstring";
-import * as nodePlatforms from "node-platforms";
+import os from "os";
+import path from "path";
+import randomstring from "randomstring";
+import nodePlatforms from "node-platforms";
 import {test} from "ava";
 
 import {instantiate, resolveAttemptOptions, Model} from "dist";

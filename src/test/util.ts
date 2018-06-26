@@ -1,5 +1,5 @@
-import * as mkdirp from "mkdirp";
-import * as path from "path";
+import mkdirp from "mkdirp";
+import path from "path";
 
 export const rootDir = path.resolve(__dirname, process.cwd());
 export const outputDir = path.join(rootDir, "output");
