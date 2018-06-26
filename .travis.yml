@@ -10,10 +10,12 @@ node_js:
   - "6"
   - "7"
   - "8"
-before_install:
+  - "9"
+  - "10"
+install:
+  - yarn install
+script:
   - node --version
   - npm --version
-install:
-  - npm install
-script:
-  - npm run dist
+  - yarn --version
+  - yarn run dist
