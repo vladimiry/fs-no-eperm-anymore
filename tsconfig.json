@@ -12,6 +12,7 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedParameters": false,
     "strictPropertyInitialization": false,
+    "importHelpers": true,
     "noEmitOnError": true,
     "declaration": true,
     "sourceMap": true,
