@@ -1,4 +1,4 @@
-import {test} from "ava";
+import test from "ava";
 
 import {instantiate} from "dist"; // import the built/final code
 import {file, fileData, lockTime, nowMs, outputDir, waitPromise} from "../util";

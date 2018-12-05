@@ -4,7 +4,7 @@ import os from "os";
 import path from "path";
 import randomstring from "randomstring";
 import nodePlatforms from "node-platforms";
-import {test} from "ava";
+import test from "ava";
 
 import {instantiate, resolveAttemptOptions, Model} from "dist";
 import {nowMs, outputDir} from "./util";
@@ -176,7 +176,7 @@ test(`custom error code delay`, async (t) => {
     });
     const file = path.join(outputDir, randomstring.generate());
     const startTime = nowMs();
-    await t.throws(instance.stat(file));
+    await t.throwsAsync(instance.stat(file));
     const timeDiffMs = nowMs() - startTime;
     t.true(timeDiffMs >= retryTimeoutMs, `timeDiffMs (${timeDiffMs}) >= retryTimeoutMs ${retryTimeoutMs}`);
 });

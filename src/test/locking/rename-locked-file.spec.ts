@@ -1,5 +1,5 @@
 import os from "os";
-import {test} from "ava";
+import test from "ava";
 
 import {instantiate} from "dist";
 import {file, fileData, nowMs, waitPromise} from "../util";
