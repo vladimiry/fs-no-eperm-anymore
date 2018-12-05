@@ -1,6 +1,6 @@
 {
   "name": "fs-no-eperm-anymore",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "Node.js module that reduces EPERM errors on win32 platform using retry approach",
   "author": "Vladimir Yakovlev <dev.vladimir.y@gmail.com> (https://github.com/vladimiry)",
   "license": "MIT",
@@ -17,7 +17,7 @@
     "EPERM"
   ],
   "engines": {
-    "node": ">=6.12.0"
+    "node": ">=6.12.3 <7 || >=8.9.4 <9 || >=10.0.0"
   },
   "main": "./index.js",
   "scripts": {
