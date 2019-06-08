@@ -22,8 +22,8 @@
     "baseUrl": ".",
     "outDir": "./compile",
     "paths": {
-      "@dist/*": [
-        "./dist/*"
+      "@lib/*": [
+        "./lib/*"
       ]
     },
     "typeRoots": [

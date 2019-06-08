@@ -14,4 +14,4 @@ test_script:
   - npm --version
   - yarn --version
   - npx envinfo
-  - yarn run dist
+  - yarn run lib

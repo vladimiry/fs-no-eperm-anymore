@@ -1,6 +1,6 @@
 import fs from "fs";
 
-import {promisify} from "./promisify";
+import {promisify} from "util";
 import {Options} from "./model";
 
 // tslint:disable:object-literal-sort-keys

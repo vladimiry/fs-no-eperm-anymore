@@ -1,7 +1,7 @@
 import test from "ava";
 
-import {instantiate} from "dist"; // import the built/final code
-import {file, fileData, lockTime, nowMs, outputDir, waitPromise} from "../util";
+import {instantiate} from "lib"; // import the built/final code
+import {file, fileData, lockTime, nowMs, waitPromise} from "../util";
 
 test(`lock file : "${file}"`, async (t) => {
     const fs = instantiate();

@@ -6,7 +6,7 @@ import randomstring from "randomstring";
 import nodePlatforms from "node-platforms";
 import test from "ava";
 
-import {instantiate, resolveAttemptOptions, Model} from "dist";
+import {instantiate, resolveAttemptOptions, Model} from "lib";
 import {nowMs, outputDir} from "./util";
 
 const CURRENT_PLATFORM = os.platform();
