@@ -7,9 +7,9 @@ os:
 sudo: false
 language: node_js
 node_js:
-  - "8"
   - "10"
-  - "lts/*"
+  - "12"
+  - "13"
 before_install:
   - | # installing the most recent yarn version
     curl -o- -L https://yarnpkg.com/install.sh | bash;
