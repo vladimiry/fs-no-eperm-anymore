@@ -30,7 +30,7 @@
     "lint:src": "tslint -p ./tsconfig.json -c ./tslint.json \"./src/{lib,@types}/**/*.ts\"",
     "lint:test": "tslint -p ./src/test/tsconfig.json -c ./src/test/tslint.json \"./src/test/**/*.ts\"",
     "lint": "npm-run-all lint:src lint:test",
-    "test": "cross-env TS_NODE_PROJECT=./src/test/tsconfig.json ava --verbose \"./src/test/**/*.spec.ts\""
+    "test": "cross-env TS_NODE_PROJECT=./src/test/tsconfig.json ava"
   },
   "pre-commit": [
     "lint"
