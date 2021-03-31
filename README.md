@@ -2,7 +2,7 @@
 
 is a Node.js module that reduces EPERM or other errors on win32 or other platforms using retry loop approach.
 
-[![Build Status: Linux / MacOS](https://travis-ci.org/vladimiry/fs-no-eperm-anymore.svg?branch=master)](https://travis-ci.org/vladimiry/fs-no-eperm-anymore) [![Build status: Windows](https://ci.appveyor.com/api/projects/status/20fesahtjfikfo9x?svg=true)](https://ci.appveyor.com/project/vladimiry/fs-no-eperm-anymore)
+[![GitHub Actions CI](https://github.com/vladimiry/fs-no-eperm-anymore/workflows/GitHub%20Actions%20CI/badge.svg?branch=master)](https://github.com/vladimiry/fs-no-eperm-anymore/actions)
 
 ## Notes
 
