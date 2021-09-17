@@ -28,11 +28,11 @@ async function retryLoop<T>(fnName: keyof typeof FUNCTIONS, action: (...args: an
 
             return await action();
         } catch (error) {
-            if (!error.code) {
+            if (!(Object(error) as {code?: unknown}).code) {
                 throw error;
             }
 
-            const attemptOptions = resolveAttemptOptions(fnName, error.code, options);
+            const attemptOptions = resolveAttemptOptions(fnName, String((Object(error) as {code?: unknown}).code), options);
 
             if (!attemptOptions
                 || typeof attemptOptions.retryIntervalMs !== "number"
